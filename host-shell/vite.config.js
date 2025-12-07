@@ -4,8 +4,8 @@ import { federation } from "@module-federation/vite";
 
 const hostPort = Number(process.env.PORT || 4173);
 const frontendRemote =
-  process.env.FRONTEND_REMOTE_URL || "https://main.d1e5rewgf1z53s.amplifyapp.com";
-const crmRemote = process.env.CRM_REMOTE_URL || "https://main.d1z03z8u6be6vo.amplifyapp.com";
+  process.env.FRONTEND_REMOTE_URL || "https://main.d1e5rewgf1z53s.amplifyapp.com/remoteEntry.js";
+const crmRemote = process.env.CRM_REMOTE_URL || "https://main.d1z03z8u6be6vo.amplifyapp.com/remoteEntry.js";
 const segmentlessRemote =
   process.env.SEGMENTLESS_REMOTE_URL || "http://localhost:4181/remoteEntry.js";
 
