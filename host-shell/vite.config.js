@@ -1,49 +1,22 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { federation } from "@module-federation/vite";
+// vite.config.ts (host-shell)
+import { defineConfig, loadEnv } from "vite"
+import react from "@vitejs/plugin-react"
+import federation from "@originjs/vite-plugin-federation"
 
-const hostPort = Number(process.env.PORT || 4173);
-const frontendRemote =
-  process.env.FRONTEND_REMOTE_URL || "https://main.d1e5rewgf1z53s.amplifyapp.com/remoteEntry.js";
-const crmRemote = process.env.CRM_REMOTE_URL || "https://main.d1z03z8u6be6vo.amplifyapp.com/remoteEntry.js";
-const segmentlessRemote =
-  process.env.SEGMENTLESS_REMOTE_URL || "http://localhost:4181/remoteEntry.js";
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "")
 
-export default defineConfig({
-  plugins: [
-    react(),
-    federation({
-      name: "shell",
-      filename: "remoteEntry.js",
-      remotes: {
-        frontend: {
-          type: "module",
-          name: "frontend",
-          entry: frontendRemote,
+  return {
+    plugins: [
+      react(),
+      federation({
+        name: "host_shell",
+        remotes: {
+          frontend_remote: env.VITE_FRONTEND_REMOTE_URL,
+          crm_remote: env.VITE_CRM_REMOTE_URL,
         },
-        crm: {
-          type: "module",
-          name: "crm",
-          entry: crmRemote,
-        },
-        segmentless: {
-          type: "module",
-          name: "segmentless",
-          entry: segmentlessRemote,
-        },
-      },
-      shared: {
-        react: { singleton: true, requiredVersion: false },
-        "react-dom": { singleton: true, requiredVersion: false },
-        "react-router-dom": { singleton: true, requiredVersion: false },
-      },
-    }),
-  ],
-  server: {
-    port: hostPort,
-    host: true,
-  },
-  preview: {
-    port: hostPort,
-  },
-});
+        shared: ["react", "react-dom"],
+      }),
+    ],
+  }
+})
