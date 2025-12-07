@@ -1,0 +1,22 @@
+applications:
+  - appRoot: micro-frontend/frontend-remote   # <- path used as app root in Amplify for THIS app
+    customHeaders:
+      - pattern: '/remoteEntry.js'
+        headers:
+          - key: 'Access-Control-Allow-Origin'
+            value: 'https://main.d2yekpy40nz7s9.amplifyapp.com'
+          - key: 'Access-Control-Allow-Methods'
+            value: 'GET,OPTIONS'
+          - key: 'Access-Control-Allow-Headers'
+            value: '*'
+
+  - appRoot: micro-frontend/crm-remote       # <- path used as app root in Amplify for the CRM app
+    customHeaders:
+      - pattern: '/remoteEntry.js'
+        headers:
+          - key: 'Access-Control-Allow-Origin'
+            value: 'https://main.d2yekpy40nz7s9.amplifyapp.com'
+          - key: 'Access-Control-Allow-Methods'
+            value: 'GET,OPTIONS'
+          - key: 'Access-Control-Allow-Headers'
+            value: '*'
