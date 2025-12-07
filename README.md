@@ -1,4 +1,4 @@
-# Lawedcue microfrontend POC
+# Lawedcue microfrontend POC using AWS Amplify
 
 New multi-repo Module Federation sandbox with a host shell and two remotes (frontend + CRM), plus a template for future remotes. Each package lives in its own folder so you can push them to separate repos later.
 
