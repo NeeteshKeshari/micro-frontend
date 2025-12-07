@@ -1,0 +1,43 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #0f172a;
+}
+
+body {
+  margin: 0;
+}
+
+.remote-surface {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.remote-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.remote-nav a {
+  padding: 6px 10px;
+  text-decoration: none;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+.remote-nav a.active,
+.remote-nav a:hover {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.muted {
+  color: #475569;
+  font-size: 14px;
+}
