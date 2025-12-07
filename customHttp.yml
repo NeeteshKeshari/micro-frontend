@@ -1,7 +1,18 @@
 applications:
-  - appRoot: micro-frontend/frontend-remote   # <- path used as app root in Amplify for THIS app
+  # FRONTEND REMOTE
+  - appRoot: micro-frontend/frontend-remote
     customHeaders:
+      # remoteEntry.js
       - pattern: '/remoteEntry.js'
+        headers:
+          - key: 'Access-Control-Allow-Origin'
+            value: 'https://main.d2yekpy40nz7s9.amplifyapp.com'
+          - key: 'Access-Control-Allow-Methods'
+            value: 'GET,OPTIONS'
+          - key: 'Access-Control-Allow-Headers'
+            value: '*'
+      # all JS assets loaded by remoteEntry
+      - pattern: '/assets/*'
         headers:
           - key: 'Access-Control-Allow-Origin'
             value: 'https://main.d2yekpy40nz7s9.amplifyapp.com'
@@ -10,7 +21,8 @@ applications:
           - key: 'Access-Control-Allow-Headers'
             value: '*'
 
-  - appRoot: micro-frontend/crm-remote       # <- path used as app root in Amplify for the CRM app
+  # CRM REMOTE
+  - appRoot: micro-frontend/crm-remote
     customHeaders:
       - pattern: '/remoteEntry.js'
         headers:
@@ -20,3 +32,16 @@ applications:
             value: 'GET,OPTIONS'
           - key: 'Access-Control-Allow-Headers'
             value: '*'
+      - pattern: '/assets/*'
+        headers:
+          - key: 'Access-Control-Allow-Origin'
+            value: 'https://main.d2yekpy40nz7s9.amplifyapp.com'
+          - key: 'Access-Control-Allow-Methods'
+            value: 'GET,OPTIONS'
+          - key: 'Access-Control-Allow-Headers'
+            value: '*'
+
+  # (Optional) HOST SHELL – usually doesn't need CORS for now,
+  # but you can still have headers here if required.
+  - appRoot: micro-frontend/host-shell
+    customHeaders: []
