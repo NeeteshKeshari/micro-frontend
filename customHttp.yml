@@ -43,3 +43,9 @@ applications:
 
   # (Optional) HOST SHELL – usually doesn't need CORS for now,
   # but you can still have headers here if required.
+  - appRoot: host-shell
+    customHeaders:
+      - pattern: '/*'
+        headers:
+          - key: 'Cache-Control'
+            value: 'no-cache'
