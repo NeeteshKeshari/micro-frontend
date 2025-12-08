@@ -17,9 +17,9 @@ export default defineConfig(({ mode }) => {
       federation({
         name: "host_shell",
         remotes: {
-          frontend: frontendRemote,
-          crm: crmRemote,
-          segmentless: segmentlessRemote,
+          frontend: { type: "module", name: "frontend", entry: frontendRemote },
+          crm: { type: "module", name: "crm", entry: crmRemote },
+          segmentless: { type: "module", name: "segmentless", entry: segmentlessRemote },
         },
         shared: ["react", "react-dom", "react-router-dom"],
       }),
