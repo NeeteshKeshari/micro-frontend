@@ -1,6 +1,6 @@
 applications:
   # FRONTEND REMOTE
-  - appRoot: micro-frontend/frontend-remote
+  - appRoot: frontend-remote
     customHeaders:
       # remoteEntry.js
       - pattern: '/remoteEntry.js'
@@ -22,7 +22,7 @@ applications:
             value: '*'
 
   # CRM REMOTE
-  - appRoot: micro-frontend/crm-remote
+  - appRoot: crm-remote
     customHeaders:
       - pattern: '/remoteEntry.js'
         headers:
@@ -43,5 +43,5 @@ applications:
 
   # (Optional) HOST SHELL – usually doesn't need CORS for now,
   # but you can still have headers here if required.
-  - appRoot: micro-frontend/host-shell
+  - appRoot: host-shell
     customHeaders: []
